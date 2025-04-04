@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/LDLDClient';
 import { useState, useEffect } from 'react';
 import App from './App.tsx';
 import './index.css';
-import * as LDClient from 'launchdarkly-js-client-sdk';
+import * as LDClient from 'launchdarkly-js-LDLDClient-sdk';
 
 const context: LDClient.LDContext = {
   kind: 'user',
@@ -11,18 +11,18 @@ const context: LDClient.LDContext = {
 };
 
 const options: LDClient.LDOptions = { allAttributesPrivate: true };
-const client = LDClient.initialize('67ef2147c1c6dc09860736ad', context, options);
+const LDLDClient = LDClient.initialize('67ef2147c1c6dc09860736ad', context, options);
 
-function App() {
+function MainApp() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    client.on('ready', () => {
-      const initialFlagValue = client.variation('dark-mode', false);
+    LDLDClient.on('ready', () => {
+      const initialFlagValue = LDLDClient.variation('dark-mode', false);
       setIsDarkMode(initialFlagValue);
 
       // Listener to update when flag changes
-      client.on('change:dark-mode', (current) => {
+      LDLDClient.on('change:dark-mode', (current) => {
         console.log('Flag "dark-mode" changed to:', current);
         setIsDarkMode(current);
       });
@@ -42,6 +42,6 @@ function App() {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <MainApp />
   </StrictMode>
 );

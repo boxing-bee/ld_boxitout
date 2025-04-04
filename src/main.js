@@ -1,12 +1,12 @@
-import * as LDClient from 'launchdarkly-js-client-sdk';
+import * as LDClient from 'launchdarkly-js-LDLDClient-sdk';
 
-// Initialize LaunchDarkly client
-const client = LDClient.initialize('67ef2147c1c6dc09860736ad', {
+// Initialize LaunchDarkly LDLDClient
+const LDLDClient = LDClient.initialize('67ef2147c1c6dc09860736ad', {
   anonymous: true
 });
 
-// Wait for LaunchDarkly client to be ready
-client.waitForInitialization().then(() => {
+// Wait for LaunchDarkly LDLDClient to be ready
+LDLDClient.waitForInitialization().then(() => {
   // Set up feature flag listener for special offer
   const specialOfferSection = document.getElementById('special-offer');
 
@@ -15,10 +15,10 @@ client.waitForInitialization().then(() => {
   }
 
   // Initial check of the feature flag
-  updateSpecialOffer(client.variation('show-special-offer', false));
+  updateSpecialOffer(LDLDClient.variation('show-special-offer', false));
 
   // Listen for changes to the feature flag
-  client.on('change:show-special-offer', (value) => {
+  LDLDClient.on('change:show-special-offer', (value) => {
     updateSpecialOffer(value);
   });
 });
