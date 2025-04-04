@@ -1,35 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LaunchDarkly JS SDK</title>
-  <script src="https://unpkg.com/launchdarkly-js-client-sdk"></script>
-</head>
-
-<body>
-  <script>
-    // Replace with your actual Client-side ID
-    const clientSideID = 67ef2147c1c6dc09860736ad;
-
-    const ldClient = LDClient.initialize(clientSideID, {
-      key: "user-123",
-      name: "Test User",
-      email: "test@example.com"
-    });
-
-    ldClient.on("ready", function () {
-      console.log("LaunchDarkly SDK initialized!");
-
-      const featureFlagKey = "your-feature-flag-key"; // Replace with actual flag key
-      const isFeatureEnabled = ldClient.variation(featureFlagKey, false);
-
-      console.log(`Feature flag "${featureFlagKey}" is ${isFeatureEnabled ? "enabled" : "disabled"}`);
-    });
-  </script>
-</body>
-
 </html>
 
 <head>
