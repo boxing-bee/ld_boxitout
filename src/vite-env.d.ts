@@ -1,1 +1,1 @@
-/// <reference types="vite/LDLDClient" />
+/// <reference types="vite/LDClient" />
